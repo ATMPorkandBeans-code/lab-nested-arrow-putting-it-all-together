@@ -1,25 +1,14 @@
-
-
-
 module.exports = {
   ...(typeof createLoginTracker !== 'undefined' && { createLoginTracker })
 };
 
-function createLoginTracker(username, password){
-  const userInfo = {
-    username: username,
-    password: password
-    };
-
-    // console.log(userInfo)
+function createLoginTracker(userInfo){
 
   let attemptCount = 0;
 
   return (passwordAttempt) => {
 
   attemptCount ++;
-
-  // console.log(attemptCount)
 
   if(passwordAttempt === userInfo.password && attemptCount <= 3 ){
     return "Login successful";
@@ -32,10 +21,3 @@ function createLoginTracker(username, password){
   }
   }
   };
-
-// const login = createLoginTracker("mockUser3", "heynow");
-
-// //console.log(login("wrong"));
-// console.log(login("heynow"));
-// // console.log(login("password123"));
-// // console.log(login("wrong"));
